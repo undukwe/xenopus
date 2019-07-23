@@ -1,0 +1,23 @@
+library(readr)
+library(dplyr)
+
+
+data <- read.csv("~/Desktop/SecSepSoundandGrids/20180731_XLPF1_F78M_2_M227B_2_extract.csv")
+
+data <- data %>%
+  mutate(Sex = Label) 
+
+data <- data[c("Sex", "StartTime", "EndTime", "Label")]
+
+for (row in 1:nrow(data)){
+  startingTime <- data[row, "StartTime"]
+  endingTime <- data[row, "EndTime"]
+  if(startingTime == endingTime){
+    data$EndTime <- data$EndTime + 1
+  }
+  
+}
+
+data
+
+write.csv("~/Desktop/SecSepSoundandGrids/20180731_XLPF1_F78M_2_M227B_2_extract.csv")
