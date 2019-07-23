@@ -19,3 +19,31 @@ MaleData
 FemaleData <- subset(F78S_2_M227B_1, Label == "F", select = -EndTime)  
 FemaleData
 
+##wrong code, found the number of female calls that overlap with male intervals like an idiot
+##count <- 0
+
+##for(i in FemaleData$StartTime){
+  ##for (row in 1:nrow(MaleData)){
+    ##startTime <- MaleData[row, "StartTime"]
+    ##endTime <- MaleData[row, "EndTime"]
+      ##if (i >= startTime && i <= endTime){
+        ##count <- count + 1
+      ##}
+  ##}
+  
+##}
+
+##THIS should work sorry
+count <- 0
+for (row in 1:nrow(MaleData)){
+  startTime <- MaleData[row, "StartTime"]
+  endTime <- MaleData[row, "EndTime"]
+  for( i in FemaleData$StartTime){
+    if (i >= startTime && i <= endTime){
+      count <- count + 1
+      break
+      }
+  }
+}
+
+print(count)
