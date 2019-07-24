@@ -93,6 +93,8 @@ dev.off()
 ##Use the code below to get the ethogram, adapt it for your own files
 ##code saves ethodram as 'test.pdf' on your desktop
 
+filepath <- "~/Desktop/SecSepSoundandGrids/20180731_XLPF1_F78M_2_M227B_2_extract.csv"
+
 ugo.frame <- read.csv("~/Desktop/SecSepSoundandGrids/20180731_XLPF1_F78M_2_M227B_2_extract.csv")
  test<-ugo.frame
   test$EndTime[which(test$Label=="F")]<-1+test$EndTime[which(test$Label=="F")]
