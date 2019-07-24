@@ -90,6 +90,22 @@ ggplot(ugo.frame, aes(fill = Label))+geom_rect(aes(xmin=StartTime, xmax=EndTime,
   labs(title = basename(filepath))
 dev.off()
 
+##Use the code below to get the ethogram, adapt it for your own files
+##code saves ethodram as 'test.pdf' on your desktop
+
+ugo.frame <- read.csv("~/Desktop/SecSepSoundandGrids/20180731_XLPF1_F78M_2_M227B_2_extract.csv")
+ test<-ugo.frame
+  test$EndTime[which(test$Label=="F")]<-1+test$EndTime[which(test$Label=="F")]
+
+  pdf("~/Desktop/test.pdf", height = 8, width = 15)
+  ggplot(test, aes(fill=Label))+geom_rect(aes(xmin=StartTime,
+                                            xmax=EndTime,
+                                            ymin=as.numeric(as.factor(Label)), 
+                                            ymax=as.numeric(as.factor(Label))+1), size = 10)+theme_bw()+
+                                            labs(title = basename(filepath))
+dev.off()
+     
+
 
 
 
